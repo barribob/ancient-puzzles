@@ -1,2 +1,3 @@
-# Example Mod
-This is an example mod for Kotlin.
+# Ancient Puzzles mod
+
+A fabric minecraft mod

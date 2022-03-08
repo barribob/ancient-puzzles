@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "mod_id",
+  "id": "ancient_puzzles",
   "version": "${version}",
-  "name": "Mod Name",
-  "description": "Mod Description",
+  "name": "Ancient Puzzles",
+  "description": "",
   "authors": [
-    "Author"
+    "Barribob"
   ],
   "contact": {
     "homepage": "https://example.com/",
@@ -19,12 +19,12 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "com.mod_author.mod_id.ModName"
+        "value": "com.barribob.ancient_puzzles.AncientPuzzles"
       }
     ]
   },
   "mixins": [
-    "mod_id.mixins.json"
+    "ancient_puzzles.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.13.3",
