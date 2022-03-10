@@ -11,12 +11,10 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 
 class ModBlocks {
-    private val inputBlock = InputBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().strength(-1.0f, 3600000f).dropsNothing())
-    private val puzzleBlock = Block(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().strength(-1.0f, 3600000f).dropsNothing())
+    val inputBlock = InputBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().strength(-1.0f, 3600000f).dropsNothing())
 
     fun init() {
         registerBlockAndItem(Mod.identifier("input_block"), inputBlock, FabricItemSettings().group(Mod.itemGroup))
-        registerBlockAndItem(Mod.identifier("puzzle_block"), puzzleBlock, FabricItemSettings().group(Mod.itemGroup))
     }
 
     private fun registerBlockAndItem(identifier: Identifier, block: Block, fabricItemSettings: FabricItemSettings = FabricItemSettings()) {

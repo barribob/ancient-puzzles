@@ -21,6 +21,9 @@
         "adapter": "kotlin",
         "value": "com.barribob.ancient_puzzles.AncientPuzzles"
       }
+    ],
+    "cardinal-components-chunk": [
+      "com.barribob.ancient_puzzles.cardinal_components.ModComponents"
     ]
   },
   "mixins": [
@@ -32,5 +35,10 @@
     "fabric-language-kotlin": ">=1.7.1+kotlin.1.6.10",
     "minecraft": "1.18.x",
     "java": ">=17"
+  },
+  "custom":  {
+    "cardinal-components": [
+      "ancient_puzzles:puzzle_manager"
+    ]
   }
 }

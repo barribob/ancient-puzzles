@@ -11,7 +11,20 @@ val modVersion: String by project
 version = modVersion
 val mavenGroup: String by project
 group = mavenGroup
-repositories {}
+repositories {
+    mavenCentral()
+    maven {
+        name = "Ladysnake Mods"
+        url = uri("https://ladysnake.jfrog.io/artifactory/mods")
+    }
+
+    maven {
+        url = uri("https://jitpack.io")
+    }
+}
+tasks.test {
+    useJUnitPlatform()
+}
 dependencies {
     val minecraftVersion: String by project
     minecraft("com.mojang:minecraft:$minecraftVersion")
@@ -23,6 +36,19 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
     val fabricKotlinVersion: String by project
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
+    val cardinalComponentsVersion: String by project
+    modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:$cardinalComponentsVersion")
+    modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:$cardinalComponentsVersion")
+    val maelstromVersion: String by project
+    modImplementation("com.github.miyo6032:maelstrom-lib:${maelstromVersion}")
+    modImplementation("com.github.miyo6032:maelstrom-lib:${maelstromVersion}")
+    val junitVersion: String by project
+    val junitCoreVersion: String by project
+    testImplementation("org.assertj:assertj-core:${junitCoreVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+    testImplementation("org.hamcrest:hamcrest-library:2.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17
