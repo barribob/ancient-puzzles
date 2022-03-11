@@ -6,27 +6,25 @@ import net.minecraft.state.property.Properties.LIT
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class PressAllBlocksPuzzleManager(private val blockView: World, private val blockPositions: List<BlockPos>) : PuzzleManager {
+class PressAllBlocksPuzzleManager(private val blockPositions: List<BlockPos>) : PuzzleManager {
 
-    constructor(chunk: World, nbtCompound: NbtCompound) : this(chunk,
-        loadBlockPositions(nbtCompound)
-    )
+    constructor(nbtCompound: NbtCompound) : this(loadBlockPositions(nbtCompound))
 
-    override fun tick() {
-        if (allBlocksLit()) {
+    override fun tick(world: World) {
+        if (allBlocksLit(world)) {
             println("You get a prize!")
         }
     }
 
-    override fun shouldRemove(): Boolean {
-        return allBlocksLit()
+    override fun shouldRemove(world: World): Boolean {
+        return allBlocksLit(world)
     }
 
     override fun toNbt(): NbtCompound {
         return saveBlockPositions(blockPositions)
     }
 
-    private fun allBlocksLit() = blockPositions.all { blockView.getBlockState(it).getOrEmpty(LIT).orElse(false) }
+    private fun allBlocksLit(world: World) = blockPositions.all { world.getBlockState(it).getOrEmpty(LIT).orElse(false) }
 
     companion object {
         fun loadBlockPositions(nbtCompound: NbtCompound) = nbtCompound.getList(

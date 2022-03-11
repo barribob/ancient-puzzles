@@ -14,6 +14,6 @@ class TestCommands {
         val puzzlePos = blockPos.west(17)
         source.world.setBlockState(blockPos, Mod.blocks.inputBlock.defaultState)
         val chunk = source.world.getChunk(puzzlePos)
-        chunk.addPuzzle(PressAllBlocksPuzzleManager(source.world, listOf(blockPos)))
+        chunk.addPuzzle(PressAllBlocksPuzzleManager(listOf(blockPos)))
     }
 }

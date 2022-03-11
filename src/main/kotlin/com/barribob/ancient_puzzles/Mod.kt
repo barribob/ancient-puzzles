@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier
 object Mod {
     private const val modId = "ancient_puzzles"
     val blocks = ModBlocks()
+    val features = ModFeatures()
     val itemGroup: ItemGroup = FabricItemGroupBuilder.build(identifier("items")) { ItemStack(Items.GLOW_ITEM_FRAME) }
     fun identifier(path: String) = Identifier(modId, path)
 }

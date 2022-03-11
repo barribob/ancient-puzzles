@@ -6,6 +6,7 @@ import net.fabricmc.api.ModInitializer
 object AncientPuzzles: ModInitializer {
     override fun onInitialize() {
         Mod.blocks.init()
+        Mod.features.init()
 
         if(MaelstromMod.isDevelopmentEnvironment) TestCommands()
     }
