@@ -1,6 +1,5 @@
 package com.barribob.ancient_puzzles.nbt
 
-import com.barribob.ancient_puzzles.mock_objects.TestBlockView
 import com.barribob.ancient_puzzles.puzzle_manager.PressAllBlocksPuzzleManager
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
@@ -10,8 +9,7 @@ import org.junit.jupiter.api.Test
 class TestPressAllBlocksSerialization {
     @Test
     fun verifyPressAllBlockPuzzleManagerSerialization() {
-        val puzzleManager = PressAllBlocksPuzzleManager(TestBlockView(), listOf(BlockPos(123, 68, 456)))
-        val nbt = puzzleManager.toNbt()
+        val nbt = PressAllBlocksPuzzleManager.saveBlockPositions(listOf(BlockPos(123, 68, 456)))
         val nbtCompound = nbt.getList("block_positions", NbtCompound().type.toInt()).first() as NbtCompound
         Assertions.assertEquals(123, nbtCompound.getInt("x"))
         Assertions.assertEquals(68, nbtCompound.getInt("y"))
@@ -20,12 +18,10 @@ class TestPressAllBlocksSerialization {
 
     @Test
     fun verifyPressAllBlockPuzzleManagerDeserialization() {
-        val puzzleManager = PressAllBlocksPuzzleManager(TestBlockView(), listOf(BlockPos(123, 68, 456)))
-        val nbt = puzzleManager.toNbt()
-        val serialization = PressAllBlocksPuzzleManager(TestBlockView(), nbt)
-        val nbtCompound = serialization.toNbt().getList("block_positions", NbtCompound().type.toInt()).first() as NbtCompound
-        Assertions.assertEquals(123, nbtCompound.getInt("x"))
-        Assertions.assertEquals(68, nbtCompound.getInt("y"))
-        Assertions.assertEquals(456, nbtCompound.getInt("z"))
+        val nbt = PressAllBlocksPuzzleManager.saveBlockPositions(listOf(BlockPos(123, 68, 456)))
+        val positions = PressAllBlocksPuzzleManager.loadBlockPositions(nbt)
+        Assertions.assertEquals(123, positions[0].x)
+        Assertions.assertEquals(68, positions[0].y)
+        Assertions.assertEquals(456, positions[0].z)
     }
 }

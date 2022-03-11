@@ -11,8 +11,9 @@ class TestCommands {
 
     private fun generatePuzzle(source: ServerCommandSource) {
         val blockPos = source.entity!!.blockPos
+        val puzzlePos = blockPos.west(17)
         source.world.setBlockState(blockPos, Mod.blocks.inputBlock.defaultState)
-        val chunk = source.world.getChunk(blockPos)
-        chunk.addPuzzle(PressAllBlocksPuzzleManager(chunk, listOf(blockPos)))
+        val chunk = source.world.getChunk(puzzlePos)
+        chunk.addPuzzle(PressAllBlocksPuzzleManager(source.world, listOf(blockPos)))
     }
 }

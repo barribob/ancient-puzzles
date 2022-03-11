@@ -4,18 +4,13 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.state.property.Properties.LIT
 import net.minecraft.util.math.BlockPos
-import net.minecraft.world.BlockView
+import net.minecraft.world.World
 
-class PressAllBlocksPuzzleManager(private val chunk: BlockView, private val blockPositions: List<BlockPos>) : PuzzleManager {
+class PressAllBlocksPuzzleManager(private val blockView: World, private val blockPositions: List<BlockPos>) : PuzzleManager {
 
-    constructor(chunk: BlockView, nbtCompound: NbtCompound) : this(chunk,
-        nbtCompound.getList(
-            "block_positions",
-            NbtCompound().type.toInt()
-        ).map {
-            val compound = it as NbtCompound
-            BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z"))
-        })
+    constructor(chunk: World, nbtCompound: NbtCompound) : this(chunk,
+        loadBlockPositions(nbtCompound)
+    )
 
     override fun tick() {
         if (allBlocksLit()) {
@@ -28,18 +23,32 @@ class PressAllBlocksPuzzleManager(private val chunk: BlockView, private val bloc
     }
 
     override fun toNbt(): NbtCompound {
-        val compound = NbtCompound()
-        val blockPositionsNbt = NbtList()
-        for (pos in blockPositions) {
-            val blockPositionNbt = NbtCompound()
-            blockPositionNbt.putInt("x", pos.x)
-            blockPositionNbt.putInt("y", pos.y)
-            blockPositionNbt.putInt("z", pos.z)
-            blockPositionsNbt.add(blockPositionNbt)
-        }
-        compound.put("block_positions", blockPositionsNbt)
-        return compound
+        return saveBlockPositions(blockPositions)
     }
 
-    private fun allBlocksLit() = blockPositions.all { chunk.getBlockState(it).getOrEmpty(LIT).orElse(false) }
+    private fun allBlocksLit() = blockPositions.all { blockView.getBlockState(it).getOrEmpty(LIT).orElse(false) }
+
+    companion object {
+        fun loadBlockPositions(nbtCompound: NbtCompound) = nbtCompound.getList(
+            "block_positions",
+            NbtCompound().type.toInt()
+        ).map {
+            val compound = it as NbtCompound
+            BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z"))
+        }
+
+        fun saveBlockPositions(blockPositions: List<BlockPos>): NbtCompound {
+            val compound = NbtCompound()
+            val blockPositionsNbt = NbtList()
+            for (pos in blockPositions) {
+                val blockPositionNbt = NbtCompound()
+                blockPositionNbt.putInt("x", pos.x)
+                blockPositionNbt.putInt("y", pos.y)
+                blockPositionNbt.putInt("z", pos.z)
+                blockPositionsNbt.add(blockPositionNbt)
+            }
+            compound.put("block_positions", blockPositionsNbt)
+            return compound
+        }
+    }
 }
