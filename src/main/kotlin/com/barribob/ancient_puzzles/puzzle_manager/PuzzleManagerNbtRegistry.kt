@@ -8,7 +8,7 @@ class PuzzleManagerNbtRegistry {
     private val typeRegistry = hashMapOf<Type, String>()
 
     init {
-        register("press_all_block", ::PressAllBlocksPuzzleManager, PressAllBlocksPuzzleManager::class.java)
+        register("press_all_blocks", ::PressAllBlocksPuzzleManager, PressAllBlocksPuzzleManager::class.java)
     }
 
     private fun register(id: String, factory: (NbtCompound) -> PuzzleManager, type: Type) {
