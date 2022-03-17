@@ -40,5 +40,6 @@
     "cardinal-components": [
       "ancient_puzzles:puzzle_manager"
     ]
-  }
+  },
+  "accessWidener": "ancient_puzzles.accesswidener"
 }

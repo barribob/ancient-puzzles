@@ -7,6 +7,7 @@ object AncientPuzzles: ModInitializer {
     override fun onInitialize() {
         Mod.blocks.init()
         Mod.features.init()
+        Mod.structures.init()
 
         if(MaelstromMod.isDevelopmentEnvironment) TestCommands()
     }
