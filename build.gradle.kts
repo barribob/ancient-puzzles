@@ -17,7 +17,7 @@ repositories {
         name = "Ladysnake Mods"
         url = uri("https://ladysnake.jfrog.io/artifactory/mods")
     }
-
+    maven { url = uri("https://www.cursemaven.com") }
     maven {
         url = uri("https://jitpack.io")
     }
@@ -52,6 +52,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
     testImplementation("org.hamcrest:hamcrest-library:2.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    modRuntimeOnly("curse.maven:disablecustomworldsadvice-401978:3677546")
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17
