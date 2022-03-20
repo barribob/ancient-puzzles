@@ -21,6 +21,7 @@ repositories {
     maven {
         url = uri("https://jitpack.io")
     }
+    maven {	url = uri("https://nexus.resourcefulbees.com/repository/maven-public/")}
 }
 tasks.test {
     useJUnitPlatform()
@@ -53,6 +54,7 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-library:2.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     modRuntimeOnly("curse.maven:disablecustomworldsadvice-401978:3677546")
+    modRuntimeOnly("com.telepathicgrunt:CommandStructures-Fabric:2.0.0+1.18.2")
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17
