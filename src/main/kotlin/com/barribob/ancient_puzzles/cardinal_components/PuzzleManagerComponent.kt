@@ -1,7 +1,7 @@
 package com.barribob.ancient_puzzles.cardinal_components
 
+import com.barribob.ancient_puzzles.Mod
 import com.barribob.ancient_puzzles.puzzle_manager.PuzzleManager
-import com.barribob.ancient_puzzles.puzzle_manager.PuzzleManagerNbtRegistry
 import dev.onyxstudios.cca.api.v3.component.ComponentV3
 import dev.onyxstudios.cca.api.v3.component.tick.ServerTickingComponent
 import net.minecraft.nbt.NbtCompound
@@ -12,8 +12,9 @@ import net.minecraft.world.chunk.Chunk
 import net.minecraft.world.chunk.WorldChunk
 
 class PuzzleManagerComponent(private val chunk: Chunk) : ComponentV3, ServerTickingComponent {
-    private val puzzleManagers = mutableSetOf<PuzzleManager>()
-    private val puzzleManagerNbtRegistry = PuzzleManagerNbtRegistry()
+    private val puzzleManagers = mutableMapOf<String, PuzzleManager>()
+    private val puzzleManagerNbtRegistry = Mod.puzzles.puzzleManagerFactory
+    private val puzzleManagerFactory = Mod.puzzles.puzzleManagerFactory
     private val puzzleManagersKey = "puzzle_managers"
     private val puzzleManagerTypeKey = "type"
     private val puzzleManagerKey = "puzzle_manager"
@@ -29,19 +30,27 @@ class PuzzleManagerComponent(private val chunk: Chunk) : ComponentV3, ServerTick
     }
 
     private fun tickPuzzles(world: World) {
-        puzzleManagers.forEach { it.tick(world) }
+        puzzleManagers.forEach { it.value.tick(world) }
     }
 
     private fun checkRemove(world: World) {
-        val toRemove = puzzleManagers.filter { it.shouldRemove(world) }.toSet()
+        val toRemove = puzzleManagers.filter { it.value.shouldRemove(world) }.map { it.key }
         if (toRemove.isNotEmpty()) {
-            puzzleManagers.removeAll(toRemove)
+            toRemove.forEach { puzzleManagers.remove(it) }
             chunk.setNeedsSaving(true)
         }
     }
 
-    fun addPuzzleManager(puzzleManager: PuzzleManager) {
-        puzzleManagers.add(puzzleManager)
+    fun getPuzzleManager(type: String) : PuzzleManager {
+        val puzzleManager = puzzleManagers[type]
+        if(puzzleManager != null) return puzzleManager
+        val newPuzzleManager = puzzleManagerFactory.createPuzzleManager(type)
+        puzzleManagers[type] = newPuzzleManager
+        return newPuzzleManager
+    }
+
+    fun removeAllPuzzles() {
+        puzzleManagers.clear()
         chunk.setNeedsSaving(true)
     }
 
@@ -50,8 +59,9 @@ class PuzzleManagerComponent(private val chunk: Chunk) : ComponentV3, ServerTick
             val puzzleManagersNbt = tag.getList(puzzleManagersKey, NbtCompound().type.toInt())
             puzzleManagersNbt.forEach {
                 val puzzleManagerNbt = (it as NbtCompound)
-                val puzzleManager = puzzleManagerNbtRegistry.createPuzzleManagerFromNbt(puzzleManagerNbt.getString(puzzleManagerTypeKey), puzzleManagerNbt.getCompound(puzzleManagerKey))
-                puzzleManagers.add(puzzleManager)
+                val type = puzzleManagerNbt.getString(puzzleManagerTypeKey)
+                val puzzleManager = puzzleManagerNbtRegistry.createPuzzleManager(type, puzzleManagerNbt.getCompound(puzzleManagerKey))
+                puzzleManagers[type] = puzzleManager
             }
         }
     }
@@ -60,8 +70,8 @@ class PuzzleManagerComponent(private val chunk: Chunk) : ComponentV3, ServerTick
         val puzzleManagersNbt = NbtList()
         puzzleManagers.forEach {
             val puzzleManagerNbt = NbtCompound()
-            puzzleManagerNbt.put(puzzleManagerTypeKey, NbtString.of(puzzleManagerNbtRegistry.getPuzzleManagerType(it)))
-            puzzleManagerNbt.put(puzzleManagerKey, it.toNbt())
+            puzzleManagerNbt.put(puzzleManagerTypeKey, NbtString.of(it.key))
+            puzzleManagerNbt.put(puzzleManagerKey, it.value.toNbt())
             puzzleManagersNbt.add(puzzleManagerNbt)
         }
         tag.put(puzzleManagersKey, puzzleManagersNbt)

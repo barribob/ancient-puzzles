@@ -6,9 +6,13 @@ import net.minecraft.state.property.Properties.LIT
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class PressAllBlocksPuzzleManager(private val blockPositions: List<BlockPos>) : PuzzleManager {
+class PressAllBlocksPuzzleManager(private var blockPositions : MutableList<BlockPos> = mutableListOf()) : PuzzleManager {
 
-    constructor(nbtCompound: NbtCompound) : this(loadBlockPositions(nbtCompound))
+    constructor(nbtCompound: NbtCompound) : this() {
+       blockPositions = loadBlockPositions(nbtCompound).toMutableList()
+    }
+
+
 
     override fun tick(world: World) {
         if (allBlocksLit(world)) {
@@ -25,6 +29,9 @@ class PressAllBlocksPuzzleManager(private val blockPositions: List<BlockPos>) : 
     }
 
     private fun allBlocksLit(world: World) = blockPositions.all { world.getBlockState(it).getOrEmpty(LIT).orElse(false) }
+    fun addPosition(pos: BlockPos) {
+        blockPositions.add(pos)
+    }
 
     companion object {
         fun loadBlockPositions(nbtCompound: NbtCompound) = nbtCompound.getList(

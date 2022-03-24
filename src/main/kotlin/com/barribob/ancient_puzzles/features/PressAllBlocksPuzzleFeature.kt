@@ -1,7 +1,7 @@
 package com.barribob.ancient_puzzles.features
 
 import com.barribob.ancient_puzzles.Mod
-import com.barribob.ancient_puzzles.addPuzzle
+import com.barribob.ancient_puzzles.getPuzzle
 import com.barribob.ancient_puzzles.puzzle_manager.PressAllBlocksPuzzleManager
 import com.mojang.serialization.Codec
 import net.minecraft.block.Block
@@ -15,7 +15,7 @@ class PressAllBlocksPuzzleFeature(configCodec: Codec<DefaultFeatureConfig>?) : F
 
         context.world.setBlockState(context.origin, Mod.blocks.inputBlock.defaultState, Block.NOTIFY_LISTENERS)
 
-        chunk.addPuzzle(PressAllBlocksPuzzleManager(listOf(context.origin)))
+        (chunk.getPuzzle(Mod.puzzles.pressAllBlocks) as PressAllBlocksPuzzleManager).addPosition(context.origin)
         return true
     }
 }

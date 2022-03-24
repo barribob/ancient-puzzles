@@ -13,7 +13,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "ancient_puzzles:ruined_house",
+        "location": "ancient_puzzles:long_pillar",
         "processors": "ancient_puzzles:house",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
