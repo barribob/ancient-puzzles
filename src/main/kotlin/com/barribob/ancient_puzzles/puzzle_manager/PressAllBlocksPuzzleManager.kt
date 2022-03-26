@@ -1,9 +1,12 @@
 package com.barribob.ancient_puzzles.puzzle_manager
 
+import net.barribob.maelstrom.MaelstromMod
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.property.Properties.LIT
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
 class PressAllBlocksPuzzleManager(private var blockPositions : MutableList<BlockPos> = mutableListOf()) : PuzzleManager {
@@ -12,7 +15,12 @@ class PressAllBlocksPuzzleManager(private var blockPositions : MutableList<Block
        blockPositions = loadBlockPositions(nbtCompound).toMutableList()
     }
 
-
+    fun visualizePuzzle(world: ServerWorld) {
+        if(blockPositions.isNotEmpty()) {
+            val points = blockPositions.flatMap { (0..20).map { i -> Vec3d(it.x.toDouble(), (it.y + i * 0.5), it.z.toDouble()) } }
+            MaelstromMod.debugPoints.drawDebugPoints(points, 60, points.first(), world)
+        }
+    }
 
     override fun tick(world: World) {
         if (allBlocksLit(world)) {

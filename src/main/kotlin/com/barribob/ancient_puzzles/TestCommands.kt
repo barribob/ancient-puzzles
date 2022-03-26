@@ -9,6 +9,7 @@ class TestCommands {
     init {
         MaelstromMod.testCommand.addId(::generatePuzzle.name, ::generatePuzzle)
         MaelstromMod.testCommand.addId(::clearPuzzles.name, ::clearPuzzles)
+        MaelstromMod.testCommand.addId(::visualizePuzzles.name, ::visualizePuzzles)
     }
 
     private fun generatePuzzle(source: ServerCommandSource) {
@@ -23,5 +24,11 @@ class TestCommands {
         val blockPos = source.entity!!.blockPos
         val chunk = source.world.getChunk(blockPos)
         ModComponents.puzzleManagerComponentKey.get(chunk).removeAllPuzzles()
+    }
+
+    private fun visualizePuzzles(source: ServerCommandSource) {
+        val blockPos = source.entity!!.blockPos
+        val chunk = source.world.getChunk(blockPos)
+        (chunk.getPuzzle(Mod.puzzles.pressAllBlocks) as PressAllBlocksPuzzleManager).visualizePuzzle(source.world)
     }
 }
