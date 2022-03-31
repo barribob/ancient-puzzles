@@ -2,7 +2,6 @@ package com.barribob.ancient_puzzles.structure.processors
 
 import com.barribob.ancient_puzzles.Mod
 import com.barribob.ancient_puzzles.getPuzzle
-import com.barribob.ancient_puzzles.puzzle_manager.PressAllBlocksPuzzleManager
 import com.mojang.serialization.Codec
 import net.minecraft.structure.Structure
 import net.minecraft.structure.StructurePlacementData
@@ -26,7 +25,7 @@ class PuzzleProcessor : StructureProcessor() {
         data: StructurePlacementData?
     ): Structure.StructureBlockInfo {
         if (structureBlockInfo.state.isOf(Mod.blocks.inputBlock)) {
-            (world.getChunk(pivot).getPuzzle("press_all_blocks") as PressAllBlocksPuzzleManager).addPosition(structureBlockInfo2.pos)
+            world.getChunk(pivot).getPuzzle(Mod.puzzles.pressAllBlocks).addPosition(structureBlockInfo2.pos)
             return structureBlockInfo2
         }
         return structureBlockInfo2

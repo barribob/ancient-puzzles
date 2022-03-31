@@ -15,7 +15,7 @@ import net.minecraft.world.gen.feature.util.FeatureContext
 import java.util.*
 import kotlin.math.abs
 
-class PressAllBlocksPuzzleFeature(configCodec: Codec<DefaultFeatureConfig>?) : Feature<DefaultFeatureConfig>(configCodec) {
+class RuinedGroundFeature(configCodec: Codec<DefaultFeatureConfig>?) : Feature<DefaultFeatureConfig>(configCodec) {
     override fun generate(context: FeatureContext<DefaultFeatureConfig>): Boolean {
         placeRuinsBase(BlockBox(context.origin).expand(10).offset(0, 10, 0), context.random, context.world)
         return true

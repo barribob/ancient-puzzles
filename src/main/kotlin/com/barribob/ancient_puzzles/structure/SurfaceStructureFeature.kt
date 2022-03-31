@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.StructureFeature
 import net.minecraft.world.gen.feature.StructurePoolFeatureConfig
 import java.util.*
 
-class TestStructureFeature : StructureFeature<StructurePoolFeatureConfig>(StructurePoolFeatureConfig.CODEC, ::generatePieces, PostPlacementProcessor.EMPTY) {
+class SurfaceStructureFeature : StructureFeature<StructurePoolFeatureConfig>(StructurePoolFeatureConfig.CODEC, ::generatePieces, PostPlacementProcessor.EMPTY) {
     companion object {
         fun generatePieces(context: StructureGeneratorFactory.Context<StructurePoolFeatureConfig>): Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> {
             var blockpos = context.chunkPos().getCenterAtY(0)

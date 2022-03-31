@@ -5,8 +5,8 @@ import net.minecraft.nbt.NbtCompound
 class PuzzleManagerFactory {
     private val idRegistry = hashMapOf<String, Factories>()
 
-    fun register(id: String, nbtFactory: (NbtCompound) -> PuzzleManager, factory: () -> PuzzleManager) {
-        idRegistry[id] = Factories(nbtFactory, factory)
+    fun <T: PuzzleManager> register(id: PuzzleType<T>, nbtFactory: (NbtCompound) -> T, factory: () -> T) {
+        idRegistry[id.type] = Factories(nbtFactory, factory)
     }
 
     fun createPuzzleManager(type: String, nbt: NbtCompound) : PuzzleManager {

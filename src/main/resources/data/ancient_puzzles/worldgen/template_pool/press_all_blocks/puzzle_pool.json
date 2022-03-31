@@ -6,7 +6,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/covered",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -15,7 +15,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/covered_2",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -24,7 +24,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/large_pit",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -33,7 +33,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/medium_pillar",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -42,7 +42,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/rubble",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -51,7 +51,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/rubble_2",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -60,7 +60,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/small_pillar",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -69,7 +69,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/small_pillar_2",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -78,7 +78,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/small_pit",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -87,7 +87,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/stairs",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -96,7 +96,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/wall",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -105,7 +105,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/stonebrick/wall_2",
-        "processors": "ancient_puzzles:house",
+        "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

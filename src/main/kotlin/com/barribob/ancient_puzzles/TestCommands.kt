@@ -17,7 +17,7 @@ class TestCommands {
         val puzzlePos = blockPos.west(17)
         source.world.setBlockState(blockPos, Mod.blocks.inputBlock.defaultState)
         val chunk = source.world.getChunk(puzzlePos)
-        (chunk.getPuzzle(Mod.puzzles.pressAllBlocks) as PressAllBlocksPuzzleManager).addPosition(blockPos)
+        chunk.getPuzzle(Mod.puzzles.pressAllBlocks).addPosition(blockPos)
     }
 
     private fun clearPuzzles(source: ServerCommandSource) {
@@ -29,6 +29,6 @@ class TestCommands {
     private fun visualizePuzzles(source: ServerCommandSource) {
         val blockPos = source.entity!!.blockPos
         val chunk = source.world.getChunk(blockPos)
-        (chunk.getPuzzle(Mod.puzzles.pressAllBlocks) as PressAllBlocksPuzzleManager).visualizePuzzle(source.world)
+        chunk.getPuzzle(Mod.puzzles.pressAllBlocks).visualizePuzzle(source.world)
     }
 }
