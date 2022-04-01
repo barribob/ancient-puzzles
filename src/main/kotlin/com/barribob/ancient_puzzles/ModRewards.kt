@@ -8,6 +8,6 @@ class ModRewards {
     val rewardFactory = RewardEventFactory()
     val debugRewardEvent = RewardType<DebugRewardEvent>("debug_reward_event")
     fun init() {
-       rewardFactory.register(debugRewardEvent, ::DebugRewardEvent)
+       rewardFactory.register(debugRewardEvent, ::DebugRewardEvent, ::DebugRewardEvent)
     }
 }

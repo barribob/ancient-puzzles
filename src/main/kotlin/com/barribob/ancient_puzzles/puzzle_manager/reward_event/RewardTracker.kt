@@ -1,36 +1,51 @@
 package com.barribob.ancient_puzzles.puzzle_manager.reward_event
 
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtList
 import net.minecraft.world.World
 
 class RewardTracker(private val rewardEventFactory: RewardEventFactory) {
-    private var reward: Reward? = null
+    private val rewardEvents = mutableMapOf<String, RewardEvent>()
+    private val rewardsKey = "rewards"
     private val rewardNbtKey = "reward"
     private val typeNbtKey = "type"
 
-    data class Reward(val rewardType: String, val rewardEvent: RewardEvent)
-
-    fun <T : RewardEvent> setReward(type: RewardType<T>, rewardEvent: T) {
-        reward = Reward(type.type, rewardEvent)
+    fun getRewardEvent(type: String): RewardEvent {
+        val rewardEvent = rewardEvents[type]
+        if (rewardEvent != null) return rewardEvent
+        val newReward = rewardEventFactory.create(type)
+        rewardEvents[type] = newReward
+        return newReward
     }
 
     fun loadNbt(nbtCompound: NbtCompound) {
+        if (nbtCompound.contains(rewardsKey)) {
+            val rewardsNbt = nbtCompound.getList(rewardsKey, NbtCompound().type.toInt())
+            rewardsNbt.toList().filterIsInstance<NbtCompound>().forEach(::loadReward)
+        }
+    }
+
+    private fun loadReward(nbtCompound: NbtCompound) {
         if (nbtCompound.contains(typeNbtKey) && nbtCompound.contains(rewardNbtKey)) {
             val type = nbtCompound.getString(typeNbtKey)
-            reward = Reward(type, rewardEventFactory.create(type, nbtCompound.getCompound(rewardNbtKey)))
+            rewardEvents[type] = rewardEventFactory.create(type, nbtCompound.getCompound(rewardNbtKey))
         }
     }
 
     fun doReward(world: World) {
-        reward?.rewardEvent?.doEvent(world)
+        rewardEvents.forEach { it.value.doEvent(world) }
     }
 
-    fun toNbt(): NbtCompound {
+    fun toNbt(nbtCompound: NbtCompound) {
+        val rewardNbt = NbtList()
+        rewardEvents.map(::saveReward).forEach { rewardNbt.add(it) }
+        nbtCompound.put(rewardsKey, rewardNbt)
+    }
+
+    private fun saveReward(entry: Map.Entry<String, RewardEvent>): NbtCompound {
         val compound = NbtCompound()
-        if (reward != null) {
-            compound.putString(typeNbtKey, reward?.rewardType)
-            compound.put(rewardNbtKey, reward?.rewardEvent?.toNbt())
-        }
+        compound.putString(typeNbtKey, entry.key)
+        compound.put(rewardNbtKey, entry.value.toNbt())
         return compound
     }
 }

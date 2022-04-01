@@ -1,9 +1,5 @@
 package com.barribob.ancient_puzzles.puzzle_manager
 
-import com.barribob.ancient_puzzles.Mod
-import com.barribob.ancient_puzzles.puzzle_manager.reward_event.RewardEvent
-import com.barribob.ancient_puzzles.puzzle_manager.reward_event.RewardTracker
-import com.barribob.ancient_puzzles.puzzle_manager.reward_event.RewardType
 import net.barribob.maelstrom.MaelstromMod
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
@@ -15,11 +11,9 @@ import net.minecraft.world.World
 
 class PressAllBlocksPuzzleManager() : PuzzleManager {
     private var blockPositions: MutableList<BlockPos> = mutableListOf()
-    private val rewardTracker = RewardTracker(Mod.rewards.rewardFactory)
 
     constructor(nbtCompound: NbtCompound) : this() {
         blockPositions = loadBlockPositions(nbtCompound).toMutableList()
-        loadReward(nbtCompound, rewardTracker)
     }
 
     fun visualizePuzzle(world: ServerWorld) {
@@ -29,20 +23,12 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
         }
     }
 
-    override fun tick(world: World) {
-        if (allBlocksLit(world)) {
-            rewardTracker.doReward(world)
-        }
-    }
-
-    override fun shouldRemove(world: World): Boolean {
+    override fun isSolved(world: World): Boolean {
         return allBlocksLit(world)
     }
 
     override fun toNbt(): NbtCompound {
-        val blockPositionsNbt = saveBlockPositions(blockPositions)
-        saveReward(blockPositionsNbt, rewardTracker)
-        return blockPositionsNbt
+        return saveBlockPositions(blockPositions)
     }
 
     private fun allBlocksLit(world: World) = blockPositions.all { world.getBlockState(it).getOrEmpty(LIT).orElse(false) }
@@ -50,21 +36,7 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
         blockPositions.add(pos)
     }
 
-    fun <T : RewardEvent> setReward(type: RewardType<T>, rewardEvent: T) {
-        rewardTracker.setReward(type, rewardEvent)
-    }
-
     companion object {
-        private const val rewardNbtKey = "reward"
-        fun saveReward(blockPositionsNbt: NbtCompound, rewardTracker: RewardTracker) {
-            val rewardNbt = rewardTracker.toNbt()
-            blockPositionsNbt.put(rewardNbtKey, rewardNbt)
-        }
-
-        fun loadReward(nbtCompound: NbtCompound, rewardTracker: RewardTracker) {
-            rewardTracker.loadNbt(nbtCompound.getCompound(rewardNbtKey))
-        }
-
         fun loadBlockPositions(nbtCompound: NbtCompound) = nbtCompound.getList(
             "block_positions",
             NbtCompound().type.toInt()

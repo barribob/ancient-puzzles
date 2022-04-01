@@ -5,11 +5,15 @@ import net.minecraft.world.World
 
 private const val messageNbtKey = "message"
 
-class DebugRewardEvent(private val message: String) : RewardEvent {
+class DebugRewardEvent(private var message: String = "") : RewardEvent {
     constructor(nbtCompound: NbtCompound) : this(nbtCompound.getString(messageNbtKey))
 
     override fun doEvent(world: World) {
         println(message)
+    }
+
+    fun setMessage(message: String) {
+        this.message = message
     }
 
     override fun toNbt(): NbtCompound {
