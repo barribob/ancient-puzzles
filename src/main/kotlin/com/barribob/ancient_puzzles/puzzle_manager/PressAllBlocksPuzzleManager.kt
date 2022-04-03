@@ -1,5 +1,7 @@
 package com.barribob.ancient_puzzles.puzzle_manager
 
+import com.barribob.ancient_puzzles.readBlockPos
+import com.barribob.ancient_puzzles.toNbt
 import net.barribob.maelstrom.MaelstromMod
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
@@ -40,20 +42,13 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
         fun loadBlockPositions(nbtCompound: NbtCompound) = nbtCompound.getList(
             "block_positions",
             NbtCompound().type.toInt()
-        ).map {
-            val compound = it as NbtCompound
-            BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z"))
-        }
+        ).filterIsInstance<NbtCompound>().map(::readBlockPos)
 
         fun saveBlockPositions(blockPositions: List<BlockPos>): NbtCompound {
             val compound = NbtCompound()
             val blockPositionsNbt = NbtList()
             for (pos in blockPositions) {
-                val blockPositionNbt = NbtCompound()
-                blockPositionNbt.putInt("x", pos.x)
-                blockPositionNbt.putInt("y", pos.y)
-                blockPositionNbt.putInt("z", pos.z)
-                blockPositionsNbt.add(blockPositionNbt)
+                blockPositionsNbt.add(pos.toNbt())
             }
             compound.put("block_positions", blockPositionsNbt)
             return compound

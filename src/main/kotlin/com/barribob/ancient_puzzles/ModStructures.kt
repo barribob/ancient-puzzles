@@ -2,12 +2,14 @@ package com.barribob.ancient_puzzles
 
 import com.barribob.ancient_puzzles.mixins.StructureFeatureRegisterInvoker
 import com.barribob.ancient_puzzles.structure.SurfaceStructureFeature
+import com.barribob.ancient_puzzles.structure.processors.AncientChestProcessor
 import com.barribob.ancient_puzzles.structure.processors.PuzzleProcessor
 import net.minecraft.structure.processor.StructureProcessorType
 import net.minecraft.world.gen.GenerationStep
 
 class ModStructures {
     val puzzleProcessor: StructureProcessorType<PuzzleProcessor> = StructureProcessorType.register(Mod.identifier("puzzle_processor").toString(), PuzzleProcessor.CODEC)
+    val ancientChestProcessor: StructureProcessorType<AncientChestProcessor> = StructureProcessorType.register(Mod.identifier("ancient_chest_processor").toString(), AncientChestProcessor.CODEC)
 
     fun init() {
         val identifier = Mod.identifier("press_all_blocks")

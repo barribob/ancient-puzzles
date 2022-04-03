@@ -22,6 +22,12 @@
         "value": "com.barribob.ancient_puzzles.AncientPuzzles"
       }
     ],
+    "client" : [
+      {
+        "adapter": "kotlin",
+        "value": "com.barribob.ancient_puzzles.AncientPuzzlesClient"
+      }
+    ],
     "cardinal-components-chunk": [
       "com.barribob.ancient_puzzles.cardinal_components.ModComponents"
     ]
@@ -40,6 +46,5 @@
     "cardinal-components": [
       "ancient_puzzles:puzzle_manager"
     ]
-  },
-  "accessWidener": "ancient_puzzles.accesswidener"
+  }
 }

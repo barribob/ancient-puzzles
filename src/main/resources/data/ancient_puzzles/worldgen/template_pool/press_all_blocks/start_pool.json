@@ -6,7 +6,7 @@
       "weight": 1,
       "element": {
         "location": "ancient_puzzles:press_all_blocks/base",
-        "processors": "minecraft:empty",
+        "processors": "ancient_puzzles:ancient_chest",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

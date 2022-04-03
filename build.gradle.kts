@@ -26,9 +26,6 @@ repositories {
 tasks.test {
     useJUnitPlatform()
 }
-loom {
-    accessWidenerPath.fileValue(file("src/main/resources/ancient_puzzles.accesswidener"))
-}
 dependencies {
     val minecraftVersion: String by project
     minecraft("com.mojang:minecraft:$minecraftVersion")
