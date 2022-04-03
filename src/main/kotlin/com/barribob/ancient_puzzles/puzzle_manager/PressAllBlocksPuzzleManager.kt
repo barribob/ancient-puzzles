@@ -33,7 +33,8 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
         return saveBlockPositions(blockPositions)
     }
 
-    private fun allBlocksLit(world: World) = blockPositions.all { world.getBlockState(it).getOrEmpty(LIT).orElse(false) }
+    private fun allBlocksLit(world: World) = blockPositions.all { world.getBlockState(it).getOrEmpty(LIT).orElse(true) }
+
     fun addPosition(pos: BlockPos) {
         blockPositions.add(pos)
     }
