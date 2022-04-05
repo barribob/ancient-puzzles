@@ -2,12 +2,15 @@ package com.barribob.ancient_puzzles.blocks
 
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
+import net.minecraft.block.RedstoneOreBlock
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.particle.DustParticleEffect
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import java.util.*
 
@@ -44,5 +47,26 @@ class InputBlock(settings: Settings?) : Block(settings) {
 
     override fun appendProperties(builder: StateManager.Builder<Block?, BlockState?>) {
         builder.add(lit)
+    }
+
+    private fun spawnParticles(world: World, pos: BlockPos) {
+        val d = 0.5625
+        val random = world.random
+        for (direction in Direction.values()) {
+            val blockPos = pos.offset(direction)
+            if (world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) continue
+            val axis = direction.axis
+            val e = if (axis === Direction.Axis.X) 0.5 + d * direction.offsetX.toDouble() else random.nextFloat().toDouble()
+            val f = if (axis === Direction.Axis.Y) 0.5 + d * direction.offsetY.toDouble() else random.nextFloat().toDouble()
+            val g = if (axis === Direction.Axis.Z) 0.5 + d * direction.offsetZ.toDouble() else random.nextFloat().toDouble()
+            world.addParticle(DustParticleEffect.DEFAULT, pos.x.toDouble() + e, pos.y.toDouble() + f, pos.z.toDouble() + g, 0.0, 0.0, 0.0)
+        }
+    }
+
+
+    override fun randomDisplayTick(state: BlockState, world: World, pos: BlockPos, random: Random?) {
+        if (state.get(RedstoneOreBlock.LIT)) {
+            spawnParticles(world, pos)
+        }
     }
 }

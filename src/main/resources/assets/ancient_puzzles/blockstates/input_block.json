@@ -1,10 +1,10 @@
 {
   "variants": {
     "lit=false": {
-      "model": "minecraft:block/redstone_lamp"
+      "model": "ancient_puzzles:block/input_block"
     },
     "lit=true": {
-      "model": "minecraft:block/redstone_lamp_on"
+      "model": "ancient_puzzles:block/input_block_on"
     }
   }
 }
