@@ -26,6 +26,7 @@ class AncientChestRewardEvent() : RewardEvent {
     private fun tryChangeToChest(world: World, blockPos: BlockPos) {
         val blockEntity = world.getBlockEntity(blockPos)
         if (blockEntity is AncientChestBlockEntity) {
+            world.breakBlock(blockPos, false)
             world.setBlockState(blockPos, Blocks.CHEST.defaultState)
             val newBlockEntity = world.getBlockEntity(blockPos)
             if(newBlockEntity is ChestBlockEntity) {
