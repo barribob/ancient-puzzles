@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ancient_puzzles:block/input_block_on"
+    }
+  }
+}

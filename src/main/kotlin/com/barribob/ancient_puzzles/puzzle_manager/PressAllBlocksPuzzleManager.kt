@@ -1,8 +1,10 @@
 package com.barribob.ancient_puzzles.puzzle_manager
 
+import com.barribob.ancient_puzzles.Mod
 import com.barribob.ancient_puzzles.readBlockPos
 import com.barribob.ancient_puzzles.toNbt
 import net.barribob.maelstrom.MaelstromMod
+import net.minecraft.block.Block
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
@@ -26,7 +28,18 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
     }
 
     override fun isSolved(world: World): Boolean {
-        return allBlocksLit(world)
+
+        val allBlocksLit = allBlocksLit(world)
+        if(allBlocksLit) {
+            blockPositions.forEach{ replacePuzzleWithBreakableBlock(world, it) }
+        }
+        return allBlocksLit
+    }
+
+    fun replacePuzzleWithBreakableBlock(world: World, pos: BlockPos) {
+        if(world.getBlockState(pos).isOf(Mod.blocks.inputBlock)) {
+            world.setBlockState(pos, Mod.blocks.finishedPressAllBlocksInput.defaultState, Block.NOTIFY_LISTENERS)
+        }
     }
 
     override fun toNbt(): NbtCompound {

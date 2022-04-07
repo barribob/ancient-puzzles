@@ -18,7 +18,8 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 
 class ModBlocks {
-    val inputBlock = InputBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().strength(-1.0f, 3600000f).luminance { if(it.get(Properties.LIT) != false) 8 else 0 }.dropsNothing())
+    val inputBlock = InputBlock(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(-1.0f, 3600000f).luminance { if(it.get(Properties.LIT) != false) 8 else 0 }.dropsNothing())
+    val finishedPressAllBlocksInput = Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(2.0f, 6.0f).luminance(8).dropsNothing())
     private val ancientPressurePlate = TimedPressurePlate(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.of(Material.STONE).requiresTool().noCollision().strength(3.0f))
     val ancientChest = AncientChestBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing()) { BlockEntityType.CHEST }
     val ancientChestBlockEntityType: BlockEntityType<AncientChestBlockEntity> = FabricBlockEntityTypeBuilder.create(::AncientChestBlockEntity, ancientChest).build()
@@ -27,6 +28,7 @@ class ModBlocks {
         registerBlockAndItem(Mod.identifier("input_block"), inputBlock, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("ancient_pressure_plate"), ancientPressurePlate, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("ancient_chest"), ancientChest, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("finished_press_all_blocks_input"), finishedPressAllBlocksInput, FabricItemSettings().group(Mod.itemGroup))
 
         Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("ancient_chest"), ancientChestBlockEntityType)
     }
