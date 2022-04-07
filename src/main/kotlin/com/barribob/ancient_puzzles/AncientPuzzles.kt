@@ -10,6 +10,7 @@ object AncientPuzzles: ModInitializer {
         Mod.structures.init()
         Mod.puzzles.init()
         Mod.rewards.init()
+        Mod.sounds.init()
 
         if(MaelstromMod.isDevelopmentEnvironment) TestCommands()
     }

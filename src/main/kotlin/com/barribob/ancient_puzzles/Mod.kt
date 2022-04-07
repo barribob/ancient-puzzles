@@ -13,6 +13,7 @@ object Mod {
     val structures = ModStructures()
     val puzzles = ModPuzzles()
     val rewards = ModRewards()
+    val sounds = ModSounds()
     val itemGroup: ItemGroup = FabricItemGroupBuilder.build(identifier("items")) { ItemStack(Items.GLOW_ITEM_FRAME) }
     fun identifier(path: String) = Identifier(modId, path)
 }

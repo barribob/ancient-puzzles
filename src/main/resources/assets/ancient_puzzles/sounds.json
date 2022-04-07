@@ -1,0 +1,8 @@
+{
+  "chest_appear": {
+    "subtitle": "subtitles.ancient_puzzles.chest_appear",
+    "sounds": [
+      "ancient_puzzles:chest_appear"
+    ]
+  }
+}
