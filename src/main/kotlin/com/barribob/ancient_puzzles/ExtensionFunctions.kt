@@ -8,6 +8,7 @@ import com.barribob.ancient_puzzles.puzzle_manager.reward_event.RewardType
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.chunk.Chunk
+import java.util.*
 
 fun <T : PuzzleManager> Chunk.getPuzzle(puzzleType: PuzzleType<T>): T {
     return ModComponents.puzzleManagerComponentKey.get(this).getPuzzleManager(puzzleType.type) as T
@@ -26,3 +27,5 @@ fun BlockPos.toNbt(): NbtCompound {
 }
 
 fun readBlockPos(compound: NbtCompound): BlockPos = BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z"))
+
+fun Random.randomPitch() = (this.nextFloat() - this.nextFloat()) * 0.2f + 1.0f
