@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ancient_puzzles:ancient_pressure_plate",
-    "ancient_puzzles:finished_press_all_blocks_input"
+    "ancient_puzzles:deepslate_pressure_plate",
+    "ancient_puzzles:solved_stone_brick_puzzle_light"
   ]
 }

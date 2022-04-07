@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import java.util.*
 
-class InputBlock(settings: Settings?) : Block(settings) {
+class PuzzleLight(settings: Settings?) : Block(settings) {
     companion object {
         val lit: BooleanProperty = Properties.LIT
     }

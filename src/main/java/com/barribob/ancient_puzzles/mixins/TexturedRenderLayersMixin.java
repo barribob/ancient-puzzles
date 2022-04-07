@@ -16,19 +16,19 @@ import java.util.function.Consumer;
 
 @Mixin(TexturedRenderLayers.class)
 public abstract class TexturedRenderLayersMixin {
-    private static final SpriteIdentifier ancientChestTexture = new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, Mod.INSTANCE.identifier("model/ancient_chest"));
+    private static final SpriteIdentifier stoneBrickChestTexture = new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, Mod.INSTANCE.identifier("model/stone_brick_chest"));
 
     @Inject(method = "getChestTexture(Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/block/enums/ChestType;Z)Lnet/minecraft/client/util/SpriteIdentifier;",
             at = @At("HEAD"),
             cancellable = true)
     private static void ancientPuzzles_getChestTexture(BlockEntity blockEntity, ChestType type, boolean christmas, CallbackInfoReturnable<SpriteIdentifier> cir) {
         if (blockEntity instanceof AncientChestBlockEntity) {
-            cir.setReturnValue(ancientChestTexture);
+            cir.setReturnValue(stoneBrickChestTexture);
         }
     }
 
     @Inject(method = "addDefaultTextures", at = @At("TAIL"))
     private static void ancientPuzzles_addDefaultTextures(Consumer<SpriteIdentifier> adder, CallbackInfo ci) {
-        adder.accept(ancientChestTexture);
+        adder.accept(stoneBrickChestTexture);
     }
 }

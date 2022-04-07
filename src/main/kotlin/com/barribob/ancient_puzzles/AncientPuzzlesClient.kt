@@ -7,6 +7,6 @@ import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer
 @Suppress("UNUSED")
 class AncientPuzzlesClient : ClientModInitializer{
     override fun onInitializeClient() {
-        BlockEntityRendererRegistry.register(Mod.blocks.ancientChestBlockEntityType, ::ChestBlockEntityRenderer)
+        BlockEntityRendererRegistry.register(Mod.blocks.stoneBrickChestBlockEntityType, ::ChestBlockEntityRenderer)
     }
 }

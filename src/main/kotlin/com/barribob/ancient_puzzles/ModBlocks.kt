@@ -2,7 +2,7 @@ package com.barribob.ancient_puzzles
 
 import com.barribob.ancient_puzzles.blocks.AncientChestBlock
 import com.barribob.ancient_puzzles.blocks.AncientChestBlockEntity
-import com.barribob.ancient_puzzles.blocks.InputBlock
+import com.barribob.ancient_puzzles.blocks.PuzzleLight
 import com.barribob.ancient_puzzles.blocks.TimedPressurePlate
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
@@ -18,19 +18,20 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 
 class ModBlocks {
-    val inputBlock = InputBlock(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(-1.0f, 3600000f).luminance { if(it.get(Properties.LIT) != false) 8 else 0 }.dropsNothing())
-    val finishedPressAllBlocksInput = Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(2.0f, 6.0f).luminance(8).dropsNothing())
-    private val ancientPressurePlate = TimedPressurePlate(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.of(Material.STONE).requiresTool().noCollision().strength(3.0f))
-    val ancientChest = AncientChestBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing()) { BlockEntityType.CHEST }
-    val ancientChestBlockEntityType: BlockEntityType<AncientChestBlockEntity> = FabricBlockEntityTypeBuilder.create(::AncientChestBlockEntity, ancientChest).build()
+    val stoneBrickPuzzleLight = PuzzleLight(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(-1.0f, 3600000f).luminance { if(it.get(Properties.LIT) != false) 8 else 0 }.dropsNothing())
+    val solvedStoneBrickPuzzleLight = Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).requiresTool().strength(2.0f, 6.0f).luminance(8).dropsNothing())
+    private val deepslatePressurePlate = TimedPressurePlate(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.of(Material.STONE).requiresTool().noCollision().strength(3.0f))
+    val stoneBrickChest = AncientChestBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing()) { BlockEntityType.CHEST }
+    val stoneBrickChestBlockEntityType: BlockEntityType<AncientChestBlockEntity> = FabricBlockEntityTypeBuilder.create(::AncientChestBlockEntity, stoneBrickChest).build()
 
     fun init() {
-        registerBlockAndItem(Mod.identifier("input_block"), inputBlock, FabricItemSettings().group(Mod.itemGroup))
-        registerBlockAndItem(Mod.identifier("ancient_pressure_plate"), ancientPressurePlate, FabricItemSettings().group(Mod.itemGroup))
-        registerBlockAndItem(Mod.identifier("ancient_chest"), ancientChest, FabricItemSettings().group(Mod.itemGroup))
-        registerBlockAndItem(Mod.identifier("finished_press_all_blocks_input"), finishedPressAllBlocksInput, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("stone_brick_puzzle_light"), stoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("deepslate_pressure_plate"), deepslatePressurePlate, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("stone_brick_chest"), stoneBrickChest, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("solved_stone_brick_puzzle_light"), solvedStoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
 
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("ancient_chest"), ancientChestBlockEntityType)
+
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("stone_brick_chest"), stoneBrickChestBlockEntityType)
     }
 
     private fun registerBlockAndItem(identifier: Identifier, block: Block, fabricItemSettings: FabricItemSettings = FabricItemSettings()) {

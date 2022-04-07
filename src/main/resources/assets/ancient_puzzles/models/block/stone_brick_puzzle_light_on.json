@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ancient_puzzles:block/stone_brick_puzzle_light_lit"
+  }
+}

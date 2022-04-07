@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ancient_puzzles:ancient_pressure_plate"
+          "name": "ancient_puzzles:deepslate_pressure_plate"
         }
       ],
       "conditions": [

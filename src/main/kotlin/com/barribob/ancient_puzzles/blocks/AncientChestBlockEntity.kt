@@ -6,7 +6,7 @@ import net.minecraft.block.entity.ChestBlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos
 
-class AncientChestBlockEntity(pos: BlockPos?, state: BlockState?) : ChestBlockEntity(Mod.blocks.ancientChestBlockEntityType, pos, state) {
+class AncientChestBlockEntity(pos: BlockPos?, state: BlockState?) : ChestBlockEntity(Mod.blocks.stoneBrickChestBlockEntityType, pos, state) {
 
     fun copyToEntity(entity: ChestBlockEntity) {
         entity.setLootTable(lootTableId, lootTableSeed)

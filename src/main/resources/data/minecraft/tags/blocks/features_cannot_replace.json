@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ancient_puzzles:input_block",
-    "ancient_puzzles:ancient_chest"
+    "ancient_puzzles:stone_brick_puzzle_light",
+    "ancient_puzzles:stone_brick_chest"
   ]
 }

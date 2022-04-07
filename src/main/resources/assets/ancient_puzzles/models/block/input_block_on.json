@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "ancient_puzzles:block/input_block_lit"
-  }
-}

@@ -24,7 +24,7 @@ class AncientChestProcessor : StructureProcessor() {
         structureBlockInfo2: Structure.StructureBlockInfo,
         data: StructurePlacementData?
     ): Structure.StructureBlockInfo {
-        if (structureBlockInfo.state.isOf(Mod.blocks.ancientChest)) {
+        if (structureBlockInfo.state.isOf(Mod.blocks.stoneBrickChest)) {
             world.getChunk(pivot).getRewardForPuzzle(Mod.puzzles.pressAllBlocks, Mod.rewards.ancientChestRewardEvent).addChestPosition(structureBlockInfo2.pos)
             return structureBlockInfo2
         }

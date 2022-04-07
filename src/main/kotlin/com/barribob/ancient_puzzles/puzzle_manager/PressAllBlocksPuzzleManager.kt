@@ -37,8 +37,8 @@ class PressAllBlocksPuzzleManager() : PuzzleManager {
     }
 
     fun replacePuzzleWithBreakableBlock(world: World, pos: BlockPos) {
-        if(world.getBlockState(pos).isOf(Mod.blocks.inputBlock)) {
-            world.setBlockState(pos, Mod.blocks.finishedPressAllBlocksInput.defaultState, Block.NOTIFY_LISTENERS)
+        if(world.getBlockState(pos).isOf(Mod.blocks.stoneBrickPuzzleLight)) {
+            world.setBlockState(pos, Mod.blocks.solvedStoneBrickPuzzleLight.defaultState, Block.NOTIFY_LISTENERS)
         }
     }
 

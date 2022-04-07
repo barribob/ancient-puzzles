@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "ancient_puzzles:block/stone_brick_puzzle_light"
+    },
+    "lit=true": {
+      "model": "ancient_puzzles:block/stone_brick_puzzle_light_on"
+    }
+  }
+}

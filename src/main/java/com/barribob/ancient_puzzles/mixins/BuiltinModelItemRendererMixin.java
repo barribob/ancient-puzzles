@@ -30,8 +30,8 @@ public class BuiltinModelItemRendererMixin {
         Item item = stack.getItem();
         if (item instanceof BlockItem) {
             BlockState blockState = ((BlockItem) item).getBlock().getDefaultState();
-            if (blockState.isOf(Mod.INSTANCE.getBlocks().getAncientChest())) {
-                blockEntityRenderDispatcher.renderEntity(new AncientChestBlockEntity(BlockPos.ORIGIN, Mod.INSTANCE.getBlocks().getAncientChest().getDefaultState()), matrices, vertexConsumers, light, overlay);
+            if (blockState.isOf(Mod.INSTANCE.getBlocks().getStoneBrickChest())) {
+                blockEntityRenderDispatcher.renderEntity(new AncientChestBlockEntity(BlockPos.ORIGIN, Mod.INSTANCE.getBlocks().getStoneBrickChest().getDefaultState()), matrices, vertexConsumers, light, overlay);
                 ci.cancel();
             }
         }
