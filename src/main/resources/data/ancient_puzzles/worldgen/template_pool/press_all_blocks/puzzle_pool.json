@@ -41,7 +41,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "ancient_puzzles:press_all_blocks/stonebrick/rubble",
+        "location": "ancient_puzzles:press_all_blocks/stonebrick/arch",
         "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "ancient_puzzles:press_all_blocks/stonebrick/rubble_2",
+        "location": "ancient_puzzles:press_all_blocks/stonebrick/wall_3",
         "processors": "ancient_puzzles:cracked_stonebrick_replace",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
