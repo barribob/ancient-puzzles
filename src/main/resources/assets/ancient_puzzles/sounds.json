@@ -4,5 +4,14 @@
     "sounds": [
       "ancient_puzzles:chest_appear"
     ]
+  },
+  "stone_brick_chest_locked": {
+    "subtitle": "subtitles.ancient_puzzles.stone_brick_chest_locked",
+    "sounds": [
+      "block/iron_trapdoor/close1",
+      "block/iron_trapdoor/close2",
+      "block/iron_trapdoor/close3",
+      "block/iron_trapdoor/close4"
+    ]
   }
 }

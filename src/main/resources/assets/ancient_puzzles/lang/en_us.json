@@ -6,5 +6,6 @@
 
   "itemGroup.ancient_puzzles.items" : "Ancient Puzzles",
 
-  "subtitles.ancient_puzzles.chest_appear" : "Chest Appears"
+  "subtitles.ancient_puzzles.chest_appear" : "Chest Appears",
+  "subtitles.ancient_puzzles.stone_brick_chest_locked" : "Chest Locked"
 }
