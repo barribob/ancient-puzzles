@@ -1,3 +1,10 @@
 {
+  "block.ancient_puzzles.stone_brick_puzzle_light" : "Stone Brick Puzzle Light",
+  "block.ancient_puzzles.deepslate_pressure_plate" : "Deepslate Pressure Plate",
+  "block.ancient_puzzles.stone_brick_chest" : "Stone Brick Chest",
+  "block.ancient_puzzles.solved_stone_brick_puzzle_light" : "Solved Stone Brick Puzzle Light",
+
+  "itemGroup.ancient_puzzles.items" : "Ancient Puzzles",
+
   "subtitles.ancient_puzzles.chest_appear" : "Chest Appears"
 }
