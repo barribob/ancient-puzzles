@@ -28,7 +28,6 @@ class PuzzleProcessor : StructureProcessor() {
         if (structureBlockInfo.state.isOf(Mod.blocks.stoneBrickPuzzleLight)) {
             val puzzle = world.getChunk(pivot).getPuzzle(Mod.puzzles.pressAllBlocks)
             puzzle.addPosition(structureBlockInfo2.pos)
-            world.getChunk(pivot).getRewardForPuzzle(Mod.puzzles.pressAllBlocks, Mod.rewards.debugRewardEvent).setMessage("epic test reward")
             return structureBlockInfo2
         }
         return structureBlockInfo2
