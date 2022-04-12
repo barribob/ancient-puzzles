@@ -8,12 +8,12 @@
     "Barribob"
   ],
   "contact": {
-    "homepage": "https://example.com/",
-    "issues": "https://example.com/",
-    "sources": "https://example.com/"
+    "homepage": "https://github.com/miyo6032/ancient-puzzles",
+    "issues": "https://github.com/miyo6032/ancient-puzzles/issues",
+    "sources": "https://github.com/miyo6032/ancient-puzzles"
   },
   "license": "GNU Lesser General Public License version 3 (LGPLv3)",
-  "icon": "assets/mod_name/icon.png",
+  "icon": "assets/ancient_puzzles/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -39,7 +39,7 @@
     "fabricloader": ">=0.13.3",
     "fabric": "*",
     "fabric-language-kotlin": ">=1.7.1+kotlin.1.6.10",
-    "minecraft": "1.18.x",
+    "minecraft": "1.18.2",
     "java": ">=17"
   },
   "custom":  {

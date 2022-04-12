@@ -8,7 +8,8 @@ base {
     archivesName.set(archivesBaseName)
 }
 val modVersion: String by project
-version = modVersion
+val minecraftVersion: String by project
+version = "$modVersion-$minecraftVersion"
 val mavenGroup: String by project
 group = mavenGroup
 repositories {
@@ -22,12 +23,12 @@ repositories {
         url = uri("https://jitpack.io")
     }
     maven {	url = uri("https://nexus.resourcefulbees.com/repository/maven-public/")}
+    maven { url = uri("https://maven.terraformersmc.com/") }
 }
 tasks.test {
     useJUnitPlatform()
 }
 dependencies {
-    val minecraftVersion: String by project
     minecraft("com.mojang:minecraft:$minecraftVersion")
     val yarnMappings: String by project
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
@@ -42,7 +43,7 @@ dependencies {
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:$cardinalComponentsVersion")
     val maelstromVersion: String by project
     modImplementation("com.github.miyo6032:maelstrom-lib:${maelstromVersion}")
-    modImplementation("com.github.miyo6032:maelstrom-lib:${maelstromVersion}")
+    include("com.github.miyo6032:maelstrom-lib:${maelstromVersion}")
     val junitVersion: String by project
     val junitCoreVersion: String by project
     testImplementation("org.assertj:assertj-core:${junitCoreVersion}")
@@ -52,6 +53,8 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     modRuntimeOnly("curse.maven:disablecustomworldsadvice-401978:3677546")
     modRuntimeOnly("com.telepathicgrunt:CommandStructures-Fabric:2.0.0+1.18.2")
+    val modmenuVersion: String by project
+    modRuntimeOnly("com.terraformersmc:modmenu:${modmenuVersion}")
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17
