@@ -1,0 +1,15 @@
+{
+  "name": "ancient_puzzles:press_all_blocks/puzzle_pool_4",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ancient_puzzles:pillar_combination/stone_bricks/pillar_4",
+        "processors": "ancient_puzzles:pillar_combination",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

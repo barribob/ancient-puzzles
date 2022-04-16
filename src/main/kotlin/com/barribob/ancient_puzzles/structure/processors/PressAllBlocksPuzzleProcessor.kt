@@ -2,7 +2,6 @@ package com.barribob.ancient_puzzles.structure.processors
 
 import com.barribob.ancient_puzzles.Mod
 import com.barribob.ancient_puzzles.getPuzzle
-import com.barribob.ancient_puzzles.getRewardForPuzzle
 import com.mojang.serialization.Codec
 import net.minecraft.structure.Structure
 import net.minecraft.structure.StructurePlacementData
@@ -11,10 +10,10 @@ import net.minecraft.structure.processor.StructureProcessorType
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.WorldView
 
-class PuzzleProcessor : StructureProcessor() {
+class PressAllBlocksPuzzleProcessor : StructureProcessor() {
     companion object {
-        val CODEC: Codec<PuzzleProcessor> = Codec.unit { INSTANCE }
-        private val INSTANCE = PuzzleProcessor()
+        val CODEC: Codec<PressAllBlocksPuzzleProcessor> = Codec.unit { INSTANCE }
+        private val INSTANCE = PressAllBlocksPuzzleProcessor()
     }
 
     override fun process(
@@ -34,6 +33,6 @@ class PuzzleProcessor : StructureProcessor() {
     }
 
     override fun getType(): StructureProcessorType<*> {
-        return Mod.structures.puzzleProcessor
+        return Mod.structures.pressAllBlocksPuzzleProcessor
     }
 }

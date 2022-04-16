@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "ancient_puzzles:pillar_combination",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 356856403,
+    "spacing": 12,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

@@ -1,9 +1,6 @@
 package com.barribob.ancient_puzzles
 
-import com.barribob.ancient_puzzles.blocks.AncientChestBlock
-import com.barribob.ancient_puzzles.blocks.AncientChestBlockEntity
-import com.barribob.ancient_puzzles.blocks.PuzzleLight
-import com.barribob.ancient_puzzles.blocks.TimedPressurePlate
+import com.barribob.ancient_puzzles.blocks.*
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
@@ -23,15 +20,19 @@ class ModBlocks {
     private val deepslatePressurePlate = TimedPressurePlate(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.of(Material.STONE).requiresTool().noCollision().strength(3.0f))
     val stoneBrickChest = AncientChestBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing()) { BlockEntityType.CHEST }
     val stoneBrickChestBlockEntityType: BlockEntityType<AncientChestBlockEntity> = FabricBlockEntityTypeBuilder.create(::AncientChestBlockEntity, stoneBrickChest).build()
+    val puzzleSetupBlock = PuzzleSetupBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing())
+    val puzzleSetupBlockEntityType: BlockEntityType<PuzzleSetupBlockEntity> = FabricBlockEntityTypeBuilder.create(::PuzzleSetupBlockEntity, puzzleSetupBlock).build()
 
     fun init() {
         registerBlockAndItem(Mod.identifier("stone_brick_puzzle_light"), stoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("deepslate_pressure_plate"), deepslatePressurePlate, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("stone_brick_chest"), stoneBrickChest, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("solved_stone_brick_puzzle_light"), solvedStoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("puzzle_setup"), puzzleSetupBlock, FabricItemSettings().group(Mod.itemGroup))
 
 
         Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("stone_brick_chest"), stoneBrickChestBlockEntityType)
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("puzzle_setup"), puzzleSetupBlockEntityType)
     }
 
     private fun registerBlockAndItem(identifier: Identifier, block: Block, fabricItemSettings: FabricItemSettings = FabricItemSettings()) {

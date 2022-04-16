@@ -32,7 +32,7 @@
       "processor_type": "minecraft:rule"
     },
     {
-      "processor_type": "ancient_puzzles:puzzle_processor"
+      "processor_type": "ancient_puzzles:puzzle_setup_processor"
     }
   ]
 }

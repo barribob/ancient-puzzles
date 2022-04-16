@@ -1,0 +1,15 @@
+{
+  "name": "ancient_puzzles:press_all_blocks/spacer_pool_2",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ancient_puzzles:pillar_combination/stone_bricks/spacer_2",
+        "processors": "minecraft:empty",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

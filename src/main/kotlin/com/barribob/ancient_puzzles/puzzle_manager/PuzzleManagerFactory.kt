@@ -6,6 +6,7 @@ class PuzzleManagerFactory {
     private val idRegistry = hashMapOf<String, Factories>()
 
     fun <T: PuzzleManager> register(id: PuzzleType<T>, nbtFactory: (NbtCompound) -> T, factory: () -> T) {
+        if (idRegistry.containsKey(id.type)) throw IllegalStateException("puzzle ${id.type} is already registered")
         idRegistry[id.type] = Factories(nbtFactory, factory)
     }
 

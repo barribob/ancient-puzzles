@@ -1,0 +1,14 @@
+{
+  "type": "ancient_puzzles:pillar_combination",
+
+  "config": {
+    "start_pool": "ancient_puzzles:pillar_combination/start_pool",
+    "size": 2
+  },
+
+  "biomes": "#ancient_puzzles:collections/in_overworld",
+
+  "adapt_noise": true,
+
+  "spawn_overrides": {}
+}

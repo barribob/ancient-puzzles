@@ -1,7 +1,8 @@
 {
   "processors": [
     {
-      "processor_type": "ancient_puzzles:ancient_chest_processor"
+      "processor_type": "ancient_puzzles:ancient_chest_processor",
+      "puzzle_type": "press_all_blocks"
     }
   ]
 }
