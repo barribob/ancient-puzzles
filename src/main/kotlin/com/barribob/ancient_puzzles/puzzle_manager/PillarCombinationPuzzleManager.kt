@@ -37,7 +37,7 @@ class PillarCombinationPuzzleManager() : PuzzleManager {
         return savePuzzle(blockPositions, lockStates)
     }
 
-    private fun combinationCorrect(world: World) = blockPositions.keys.intersect(lockStates.keys).all { lockValid(world, it) }
+    private fun combinationCorrect(world: World) = lockStates.any() && blockPositions.keys.intersect(lockStates.keys).all { lockValid(world, it) }
 
     private fun lockValid(world: World, lockId: Int): Boolean {
         val optional = world.getBlockState(blockPositions[lockId]).getOrEmpty(LIT)

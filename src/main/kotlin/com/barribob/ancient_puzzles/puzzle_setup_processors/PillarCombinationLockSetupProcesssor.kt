@@ -15,11 +15,11 @@ class PillarCombinationLockSetupProcesssor : PuzzleSetupProcessor {
         if (get.contains("lock_id")) {
             val lit = data.getRandom(structureBlockInfo.pos).nextBoolean()
             world.getChunk(pivot).getPuzzle(Mod.puzzles.pillarCombination).addLockState(get.getInt("lock_id"), lit)
-            val indicatorBlock = if (lit) Mod.blocks.solvedStoneBrickPuzzleLight else Blocks.STONE_BRICKS
+            val indicatorBlock = if (lit) Mod.blocks.solvedStoneBrickPuzzleLight else Blocks.CHISELED_STONE_BRICKS
 
             return Structure.StructureBlockInfo(structureBlockInfo.pos, indicatorBlock.defaultState, NbtCompound())
         }
 
-        return Structure.StructureBlockInfo(structureBlockInfo.pos, Blocks.STONE_BRICKS.defaultState, NbtCompound())
+        return Structure.StructureBlockInfo(structureBlockInfo.pos, Blocks.CHISELED_STONE_BRICKS.defaultState, NbtCompound())
     }
 }
