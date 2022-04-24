@@ -1,0 +1,15 @@
+{
+  "name": "ancient_puzzles:directional_light/end/end_up",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ancient_puzzles:directional_light/end/power_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

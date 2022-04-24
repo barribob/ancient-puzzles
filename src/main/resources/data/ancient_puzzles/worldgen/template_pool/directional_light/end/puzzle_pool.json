@@ -1,0 +1,24 @@
+{
+  "name": "ancient_puzzles:directional_light/end/puzzle_pool",
+  "fallback": "ancient_puzzles:directional_light/end/end_side",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ancient_puzzles:directional_light/end/side_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "ancient_puzzles:directional_light/end/side_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

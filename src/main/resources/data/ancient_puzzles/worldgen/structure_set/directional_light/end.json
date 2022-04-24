@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "ancient_puzzles:directional_light",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 356856403,
+    "spacing": 12,
+    "separation": 4,
+    "type": "minecraft:random_spread"
+  }
+}

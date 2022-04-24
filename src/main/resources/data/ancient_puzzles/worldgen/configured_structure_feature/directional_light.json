@@ -1,0 +1,14 @@
+{
+  "type": "ancient_puzzles:directional_light",
+
+  "config": {
+    "start_pool": "ancient_puzzles:directional_light/end/start_pool",
+    "size": 7
+  },
+
+  "biomes": "#ancient_puzzles:collections/in_overworld",
+
+  "adapt_noise": true,
+
+  "spawn_overrides": {}
+}
