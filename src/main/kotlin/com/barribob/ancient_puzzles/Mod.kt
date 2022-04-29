@@ -1,5 +1,6 @@
 package com.barribob.ancient_puzzles
 
+import com.barribob.ancient_puzzles.structure.ModProperties
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
@@ -8,6 +9,7 @@ import net.minecraft.util.Identifier
 
 object Mod {
     private const val modId = "ancient_puzzles"
+    val properties = ModProperties()
     val blocks = ModBlocks()
     val features = ModFeatures()
     val structures = ModStructures()

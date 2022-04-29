@@ -27,5 +27,9 @@ fun BlockPos.toNbt(): NbtCompound {
 }
 
 fun readBlockPos(compound: NbtCompound): BlockPos = BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z"))
+fun NbtCompound.getBlockPos(key: String): BlockPos = readBlockPos(this.getCompound(key))
+fun NbtCompound.putBlockPos(key: String, blockPos: BlockPos) {
+    this.put(key, blockPos.toNbt())
+}
 
 fun Random.randomPitch() = (this.nextFloat() - this.nextFloat()) * 0.2f + 1.0f

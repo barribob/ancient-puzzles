@@ -22,6 +22,8 @@ class ModBlocks {
     val stoneBrickChestBlockEntityType: BlockEntityType<AncientChestBlockEntity> = FabricBlockEntityTypeBuilder.create(::AncientChestBlockEntity, stoneBrickChest).build()
     val puzzleSetupBlock = PuzzleSetupBlock(FabricBlockSettings.of(Material.STONE).strength(-1f, 3600000f).dropsNothing())
     val puzzleSetupBlockEntityType: BlockEntityType<PuzzleSetupBlockEntity> = FabricBlockEntityTypeBuilder.create(::PuzzleSetupBlockEntity, puzzleSetupBlock).build()
+    val endDiverter = EndDiverterBlock(FabricBlockSettings.of(Material.DECORATION).strength(-1f, 3600000f).noCollision().dropsNothing())
+    val endBattery = EndBatteryBlock(FabricBlockSettings.of(Material.DECORATION).strength(-1f, 3600000f).dropsNothing())
 
     fun init() {
         registerBlockAndItem(Mod.identifier("stone_brick_puzzle_light"), stoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
@@ -29,7 +31,8 @@ class ModBlocks {
         registerBlockAndItem(Mod.identifier("stone_brick_chest"), stoneBrickChest, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("solved_stone_brick_puzzle_light"), solvedStoneBrickPuzzleLight, FabricItemSettings().group(Mod.itemGroup))
         registerBlockAndItem(Mod.identifier("puzzle_setup"), puzzleSetupBlock, FabricItemSettings().group(Mod.itemGroup))
-
+        registerBlockAndItem(Mod.identifier("end_diverter"), endDiverter, FabricItemSettings().group(Mod.itemGroup))
+        registerBlockAndItem(Mod.identifier("end_battery"), endBattery, FabricItemSettings().group(Mod.itemGroup))
 
         Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("stone_brick_chest"), stoneBrickChestBlockEntityType)
         Registry.register(Registry.BLOCK_ENTITY_TYPE, Mod.identifier("puzzle_setup"), puzzleSetupBlockEntityType)

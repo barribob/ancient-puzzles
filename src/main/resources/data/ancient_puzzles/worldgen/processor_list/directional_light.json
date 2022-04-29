@@ -1,0 +1,11 @@
+{
+  "processors": [
+    {
+      "processor_type": "ancient_puzzles:ancient_chest_processor",
+      "puzzle_type": "directional_light"
+    },
+    {
+      "processor_type": "ancient_puzzles:directional_light_puzzle_processor"
+    }
+  ]
+}

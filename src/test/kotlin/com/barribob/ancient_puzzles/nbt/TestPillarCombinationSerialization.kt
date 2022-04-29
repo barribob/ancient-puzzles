@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 
 class TestPillarCombinationSerialization {
     @Test
-    fun verifyPressAllBlockPuzzleManagerDeserialization() {
+    fun verifyFullSerialzation() {
         val nbt = PillarCombinationPuzzleManager.savePuzzle(mapOf(Pair(1, BlockPos(123, 68, 456))), mapOf(Pair(1, true)))
         val positions = PillarCombinationPuzzleManager.loadPositions(nbt)
         val locks = PillarCombinationPuzzleManager.loadLocks(nbt)
